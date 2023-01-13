@@ -52,13 +52,14 @@ RUN;
 /******************************************************************
 This program will look at grades file for 6 students and load it into a permanent dataset.
 ******************************************************************/
+LIBNAME stat '\\Mac\Home\Documents\PSU Graduate Degree 6.13.35 PM\2023 Spring\SAS\';
 
 
-DATA question3;
+DATA stat.lesson2question3;
 	infile '\\Mac\Home\Documents\PSU Graduate Degree 6.13.35 PM\2023 Spring\SAS\grades.dat';
 	input id 1-2 gender $ 3 Exam1 4-5 Exam2 6-7 HW $ 8;
 RUN;
 
-PROC PRINT data=question3;
+PROC PRINT data=stat.lesson2question3;
 	title 'Student Data';
 RUN
