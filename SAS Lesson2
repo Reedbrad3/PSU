@@ -1,0 +1,64 @@
+/******************************************************************** 
+\\Mac\Home\Documents\PSU Graduate Degree 6.13.35 PM\2023 Spring\SAS
+Written by : Bradley Reed
+Date: Jan 13 2023
+
+This program creates an output based on a column format input. 
+It includes 1 character and five numeric variables. 
+INPUT: Lesson 2 column data
+OUTPUT: Town Name, Town Number, Month, Year, Low Temp(F), High Temp(F)
+OUTPUT is put into a perm.file
+**********************************************************************/
+
+OPTIONS PS=60 LS=80 NODATE;
+
+LIBNAME stat "\\Mac\Home\Documents\PSU Graduate Degree 6.13.35 PM\2023 Spring\SAS"; *Tells which library;
+
+DATA stat.lesson2;
+	input name $ 1-6 number 8-9 month 11-13 year 15-20 low 22-24 high 25-27; *Name of Columns;
+	CARDS;
+Kane   20  12  2005  12  25
+Ambler 22  12  2005   8  20
+Kane   20  01  2006  13  32
+Oakey  32  12  2005  30  50
+Oakey  32  01  2006  25  45
+Ambler 22  01  2006  15  28
+   ;
+RUN;
+
+ PROC PRINT data=stat.lesson2;
+ 	title 'Output Lesson 2';
+RUN;
+
+/*******************************************************************
+This program will copy the input from the lesson2 dataset and return the same output.
+Lesson 2 is stored in the Spring\SAS folder
+OUTPUT mirrored except for the output title.
+OUTPUT is put into a temp file
+*******************************************************************/
+
+
+LIBNAME stat "\\Mac\Home\Documents\PSU Graduate Degree 6.13.35 PM\2023 Spring\SAS";
+
+DATA temp;
+	set stat.lesson2;
+RUN;
+
+PROC PRINT data=temp;
+	title 'Output dataset 2: TEMP';
+RUN;
+
+
+/******************************************************************
+This program will look at grades file for 6 students and load it into a permanent dataset.
+******************************************************************/
+
+
+DATA question3;
+	infile '\\Mac\Home\Documents\PSU Graduate Degree 6.13.35 PM\2023 Spring\SAS\grades.dat';
+	input id 1-3 gender $ 5 Exam1 7-9 Exam2 11-13 HW 15;
+RUN;
+
+PROC PRINT data=question3;
+	title 'Student Data';
+RUN
