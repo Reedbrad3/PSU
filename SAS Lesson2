@@ -51,6 +51,8 @@ RUN;
 
 /******************************************************************
 This program will look at grades file for 6 students and load it into a permanent dataset.
+The fill will be located in the library named below
+The data contains 2 character and 3 numeric variables 
 ******************************************************************/
 LIBNAME stat '\\Mac\Home\Documents\PSU Graduate Degree 6.13.35 PM\2023 Spring\SAS\';
 
